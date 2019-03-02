@@ -1,0 +1,19 @@
+{
+  "name": "Orion",
+  "Description": "Micro Framewrok MVC/OOP",
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {"name": "Rafael Chirel", "email": "rafaelchirel@hotmail.com"}
+  ],
+  "autoload":{
+    "psr-4":{
+      "App\\": "app/",
+      "Core\\": "core/"
+    }
+  },
+  "require":{
+    "php": ">=5.6.4",
+    "illuminate/database": "^5.4"
+  }
+}

@@ -1,0 +1,62 @@
+<div class="container">
+	<div class="row">
+		<h1 class="h1">
+			<?php echo $this->getPageTitle(); ?>
+
+			<?php if($this->auth->check()): ?>
+			<a href="/post/create" class="btn btn-primary pull-right">
+				<i class="glyphicon glyphicon-plus-sign"></i> new post
+			</a>
+			<?php endif; ?>
+
+		</h1>
+	</div>
+
+	<?php self::renderView('alerts/_success'); ?>
+	<?php self::renderView('alerts/_errors'); ?>
+	
+	<?php if( count($this->view->posts) > 0 ): ?>
+		<?php foreach ($this->view->posts as $post): ?>
+			<div class="row">
+				<h3 class="h3">
+					<a href="/post/<?php echo $post->id; ?>/show">
+						<?php echo strtoupper($post->title); ?>
+					</a>
+				</h3>
+				<p class="text-justify"><?php echo $post->content; ?></p>
+				<p>
+					<strong>Autor: </strong><?php echo ucwords($post->user->name); ?> <br>
+					<strong>Categories: </strong>
+					<?php
+						if (count($post->category) > 0):
+							foreach ($post->category as $cat) 
+								echo "<span class='label label-default'>{$cat->name}</span> ";
+						else:
+								echo "<span class='label label-warning'>-</span>";
+						endif;
+					?>
+
+					<?php if($this->auth->check() && $post->user->id == $this->auth->id()): ?>
+					<span class="pull-right">
+						<a href="/post/<?php echo $post->id ?>/edit" class="btn btn-warning btn-xs">
+							<i class="glyphicon glyphicon-pencil"></i>
+						</a>
+						<a href="/post/<?php echo $post->id ?>/delete" class="btn btn-danger btn-xs"
+							onclick="return confirm('¿Desear eliminar el post?')">
+							<i class="glyphicon glyphicon-remove-sign"></i>
+						</a>
+					</span>
+					<?php endif; ?>
+				</p>
+			</div>
+		<?php endforeach; ?>
+
+	<?php else: ?>
+		<p>No se encontraron post.</p>
+	<?php endif; ?>
+
+	
+	<div>
+		<hr>
+	</div>
+</div>
