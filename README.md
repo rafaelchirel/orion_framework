@@ -3,6 +3,10 @@
 ## Link publico del proyecto (URL)
 https://orion-framework.herokuapp.com/
 
+**Ocupo los siguientes Servicios**
+	Hosting:      https://www.heroku.com/
+	MySQL Remote: https://www.db4free.net/
+
 **Usuario previamente registrado**
 ```shell
 	Administrador:
@@ -24,6 +28,8 @@ https://orion-framework.herokuapp.com/
 - Proteccion de Rutas.
 - Filtros de seguridad (Auth).
 - Sistema simple de View / layout y content.
+- bootstrap V3.3.7
+- jQuery 3.3.1.
 
 ## Requerimientos
 
